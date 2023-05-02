@@ -1,6 +1,6 @@
-<tr class='border-top'>
-    <td>
-        <span class='text-<%= task.css_color %>'><%= task.symbol %></span>
+<tr class='<%= task.parent? ? 'border-top' : '' %> align-middle'>
+    <td class='<%= task.sub_task? ? 'ps-5' : '' %>'>
+        <span class='text-<%= task.css_color %> pe-2'><%= task.symbol %></span>
 
         <% if task.done? %>
             <s class='text-muted'><%= task.description %></s>
@@ -9,7 +9,7 @@
         <% end %>
     </td>
 
-    <td>
+    <td class='text-center'>
         <% if task.done? %>
             <s class='text-muted'><%= l task.due_date %></s>
         <% else %>
@@ -17,8 +17,13 @@
         <% end %>
     </td>
 
-    <td>
+    <td class='text-end pe-0'>
+        <% if task.parent? %>
+            <%= link_to '+ Sub-tarefa', new_task_path(parent_id: task.id), class: 'btn btn-success btn-sm' %>
+        <% end %>
+
         <%= link_to 'Editar', edit_task_path(task), class: 'btn btn-secondary btn-sm' %>
+        
         <%= link_to 'Apagar', task, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Você tem certeza?'} %>
     </td>
 

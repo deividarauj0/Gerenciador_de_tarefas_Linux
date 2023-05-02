@@ -3,17 +3,15 @@
     <h1 class='display-4'>Tarefas</h1>
   </div>
 
-  <div class='col-4 mt-4 text-right'>
-    <%= link_to '+ Tarefas', new_task_path, class: 'btn btn-success' %>
-  </div>
-
   <% if @tasks.any? %>
     <table class='table table-borderless'>
       <thead>
         <tr>
-          <th>Descrição</th>
-          <th>Prazo</th>
-          <th></th>
+          <th class='tam_text align-middle'>Descrição</th>
+          <th class='tam_text align-middle text-center'>Prazo</th>
+          <th class='text-end align-middle pe-0'>
+            <%= link_to '+ Tarefas', new_task_path, class: 'btn btn-success' %>
+          </th>
         </tr>
       </thead>
  
