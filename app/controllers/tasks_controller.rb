@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.order(:due_date, :description)
+    @tasks = Task.only_parents.order(:due_date, :description)
   end
 
   # GET /tasks/new
