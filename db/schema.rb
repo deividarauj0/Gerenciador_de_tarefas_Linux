@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2023_05_02_134221) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tasks", force: :cascade do |t|
     t.string "description", null: false
     t.date "due_date"
     t.boolean "done", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
+    t.bigint "parent_id"
     t.index ["parent_id"], name: "index_tasks_on_parent_id"
   end
 
