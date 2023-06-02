@@ -2,6 +2,7 @@
   <div class='col-8'>
     <h1 class='display-4'>Tarefas</h1>
   </div>
+  
 
   <% if @tasks.any? %>
     <table class='table table-borderless'>
@@ -27,5 +28,6 @@
     </table>
   <% else %>
     <p>Nenhuma tarefa foi cadastrada.</p>
+    <%= link_to '+ Tarefas', new_task_path, class: 'btn btn-success' %>
   <% end %>
 </div>
